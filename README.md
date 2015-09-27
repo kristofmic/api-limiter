@@ -57,7 +57,7 @@ limiter.blacklist('blacklist', ['ABC-123', 'XYZ-789'])
 **Arguments**
 
 1. setName *(String)*: the name of the blacklist to update
-2. ids *(Array<String>)*: the id(s) to add to the blacklist set
+2. ids *(Array < String >)*: the id(s) to add to the blacklist set
 
 **Returns**
 
