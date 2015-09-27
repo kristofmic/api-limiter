@@ -80,7 +80,6 @@ limiterInstance.consume('ABC-123')
     // handle error
   });
 ```
-```
 
 A custom error which can be rejected and specifically caught (via a promise API like [Bluebird's](https://github.com/petkaantonov/bluebird/blob/master/API.md#catchfunction-errorclassfunction-predicate-function-handler---promise)) when a consumer's key has exceed the limit over the given interval.
 
