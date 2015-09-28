@@ -1,6 +1,6 @@
 {
   "name": "api-limiter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "limits (throttles) requests and resources, typically for usage on API enpdoints",
   "repository": "https://github.com/kristofmic/api-limiter",

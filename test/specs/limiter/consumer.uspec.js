@@ -9,7 +9,8 @@ describe('consumer', function () {
     clientStub = {
       hgetAsync: sinon.stub(),
       hincrbyAsync: sinon.stub(),
-      expireAsync: sinon.stub()
+      expireAsync: sinon.stub(),
+      delAsync: sinon.stub()
     };
 
     redisClientStub = {
@@ -53,6 +54,25 @@ describe('consumer', function () {
             interval: 100,
             allowed: true
           });
+          done();
+        });
+    });
+  });
+
+  describe('clear()', function () {
+    var
+      c;
+
+    beforeEach(function() {
+      clientStub.delAsync.returns(Bluebird.resolve(1));
+
+      c = new Consumer(redisClientStub, {limit: 10, interval: 100, namespace: 'foobar'});
+    });
+
+    it('should remove the consumer from redis', function(done) {
+      c.clear('uid')
+        .then(function(res) {
+          expect(res).to.equal(1);
           done();
         });
     });

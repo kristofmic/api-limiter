@@ -38,6 +38,17 @@ class Consumer {
         .then(_returnConsumer.bind(self, id));
     }
   }
+
+  clear(id) {
+    var
+      self = this;
+
+    return self.redisClientPool.getClientAsync(exec);
+
+    function exec(client) {
+      return client.delAsync(`${self.namespace}:${id}`);
+    }
+  }
 }
 
 module.exports = Consumer;

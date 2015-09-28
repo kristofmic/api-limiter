@@ -183,6 +183,30 @@ A consumer object for the given id including:
 * interval *(Integer)*: the time interval (in seconds) over which usage is being limited (as established by the configuration passed when creating the limiter instance)
 * allowed *(Boolean)*: true/false as to whether usage has exceeded the limit over the time interval
 
+##### #clear(id)
+```
+var limiter = require('api-limiter').connect([poolRedisPromiseConfig]);
+
+var limiterInstance = limiter.create([consumerConfig]);
+
+limiterInstance.clear('ABC-123')
+  .then(function(res) {
+    // expect res === 1
+  })
+  .then(...)
+  .catch(...);
+```
+
+For the given id, clear the associated consumer object from redis
+
+**Arguments**
+
+1. id *(String)*: the id to remove
+
+**Returns**
+
+An integer value representing the number of key/values that have been removed
+
 ## Testing
 
 Tests can be run via `npm test`. Ensure that an instance of Redis is running for the integration tests.

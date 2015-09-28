@@ -52,6 +52,17 @@ var Consumer = (function () {
         return client.hgetAsync(self.namespace + ':' + id, 'usage').then(_returnConsumer.bind(self, id));
       }
     }
+  }, {
+    key: 'clear',
+    value: function clear(id) {
+      var self = this;
+
+      return self.redisClientPool.getClientAsync(exec);
+
+      function exec(client) {
+        return client.delAsync(self.namespace + ':' + id);
+      }
+    }
   }]);
 
   return Consumer;
